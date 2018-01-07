@@ -28,4 +28,12 @@ RSpec.describe Book do
       expect { book_with_wrong_year }.to raise_error(ArgumentError)
     end
   end
+
+  describe '.to_s' do
+    subject(:book) { Book.new 1, 'Donald Knuth', 'The Art of Computer Programming', 1968 }
+
+    it 'returns string with book title' do
+      expect(book.to_s).to be_a(String).and include('The Art of Computer Programming')
+    end
+  end
 end
