@@ -68,6 +68,7 @@ class HostApp
     write '[2] ADD USER'
     write '[3] REMOVE USER'
     write '[4] UPDATE USER'
+    write '[5] GO BACK'
   end
 
   def choose_user_option
@@ -82,9 +83,15 @@ class HostApp
       remove_user
     when '4'
       update_user
+    when '5'
+      return
     else
       write 'Wrong option!'
     end
+
+    print_gap
+    print_user_menu
+    choose_user_option
   end
 
   def print_users
@@ -136,6 +143,7 @@ class HostApp
     write '[2] ADD BOOK'
     write '[3] REMOVE BOOK'
     write '[4] UPDATE BOOK'
+    write '[5] GO BACK'
   end
 
   def choose_book_option
@@ -150,9 +158,15 @@ class HostApp
       remove_book
     when '4'
       update_book
+    when '5'
+      return
     else
       write 'Wrong option!'
     end
+
+    print_gap
+    print_book_menu
+    choose_book_option
   end
 
   def print_books
