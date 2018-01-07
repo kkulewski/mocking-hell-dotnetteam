@@ -19,6 +19,7 @@ class User
     raise ArgumentError, 'Invalid ID' unless valid_id?
     raise ArgumentError, 'Invalid PESEL' unless valid_pesel?
     raise ArgumentError, 'Invalid first name' unless valid_first_name?
+    raise ArgumentError, 'Invalid last name' unless valid_last_name?
   end
 
   def valid_id?
@@ -26,9 +27,16 @@ class User
   end
 
   def vaild_first_name?
-    @first_name.kind_of(String)
+    @first_name.is_a?(String)
     @first_name.chars.first.upcase
     if @first_name.length > 15
+    end
+  end
+
+  def vaild_last_name?
+    @last_name.is_a?(String)
+    @last_name.chars.first.upcase
+    if @first_name.length > 20
     end
   end
 
