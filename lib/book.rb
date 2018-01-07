@@ -6,7 +6,8 @@ class Book
     @author = author
     @title = title
     @year = year
-    @rented_by = nil # user_id
+    @rented_by = nil
+    validate
   end
 
   def validate
@@ -29,6 +30,6 @@ class Book
   end
 
   def valid_year?
-    @year <= Data.today.year
+    @year <= Date.today.year
   end
 end
