@@ -22,7 +22,7 @@ class Book
   end
 
   def valid_author?
-    @author.is_a?(String) && @author.length >= 1 && @author.length <= 50 && @author.chars.first.upcase
+    @author.is_a?(String) && @author.length >= 1 && @author.length <= 50 && @author.chars.first =~ /[A-Z]/
   end
 
   def valid_title?
