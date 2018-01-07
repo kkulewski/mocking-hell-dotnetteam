@@ -5,6 +5,7 @@ RSpec.describe User do
     subject(:valid_user) { User.new 1, 'John', 'Doe', '90010198765' }
     subject(:user_with_wrong_id) { User.new 'A', 'John', 'Doe', '90010198765' }
     subject(:user_with_wrong_first_name) { User.new 1, 'johannantadeusz', 'Doe', '90010198765' }
+    subject(:user_with_wrong_last_name) { User.new 1, 'Joe', 'dontremuslikamteruskiwon' }
     subject(:user_with_wrong_pesel) { User.new 1, 'John', 'Doe', '90010198a65' }
 
     it 'initializes a new valid user' do
@@ -17,6 +18,10 @@ RSpec.describe User do
 
     it 'raises error on user with wrong first name' do
       expect { user_with_wrong_first_name }.to raise_error(ArgumentError)
+    end
+
+    it 'raises error on user with wrong last name' do
+      expect { user_with_wrong_last_name }.to raise_error(ArgumentError)
     end
 
     it 'raises error on user with wrong pesel' do
