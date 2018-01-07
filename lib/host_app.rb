@@ -212,11 +212,19 @@ class HostApp
 
   ### HELPERS
 
-  def populate
+  def populate_users
     @user_manager.add_user(User.new(1, 'John', 'Doe', '91010155666'))
     @user_manager.add_user(User.new(2, 'Kate', 'Smith', '75101198765'))
     @user_manager.add_user(User.new(3, 'Tom', 'Parker', '85051045678'))
     @user_manager.add_user(User.new(4, 'Edgar', 'Williams', '60110122333'))
     @user_manager.add_user(User.new(5, 'Jen', 'Brown', '95030400111'))
+  end
+
+  def populate_books
+    @book_manager.add_book(Book.new(1, 'Fyodor Dostoyevsky', 'The Brothers Karamazov', 1880))
+    @book_manager.add_book(Book.new(2, 'Franz Kafka', 'The Castle', 1926))
+    @book_manager.add_book(Book.new(3, 'Dante Alighieri', 'The Divine Comedy', 1320))
+    @book_manager.add_book(Book.new(4, 'Johann Wolfgang', 'Faust', 1833))
+    @book_manager.add_book(Book.new(5, 'William Shakespeare', 'Hamlet', 1609))
   end
 end
