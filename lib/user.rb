@@ -27,17 +27,11 @@ class User
   end
 
   def vaild_first_name?
-    @first_name.is_a?(String)
-    @first_name.chars.first.upcase
-    if @first_name.length > 15
-    end
+    @first_name.is_a?(String) && @first_name.chars.first.upcase && @first_name.length > 2
   end
 
   def vaild_last_name?
-    @last_name.is_a?(String)
-    @last_name.chars.first.upcase
-    if @first_name.length > 20
-    end
+    @last_name.is_a?(String) && @last_name.chars.first.upcase && @first_name.length > 2
   end
 
   def valid_pesel?
