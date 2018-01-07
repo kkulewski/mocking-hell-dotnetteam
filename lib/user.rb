@@ -26,12 +26,12 @@ class User
     @id.is_a?(Numeric)
   end
 
-  def vaild_first_name?
-    @first_name.is_a?(String) && @first_name.chars.first.upcase && @first_name.length > 2
+  def valid_first_name?
+    @first_name.is_a?(String) && @first_name.chars.first =~ /[A-Z]/ && @first_name.length > 2
   end
 
-  def vaild_last_name?
-    @last_name.is_a?(String) && @last_name.chars.first.upcase && @first_name.length > 2
+  def valid_last_name?
+    @last_name.is_a?(String) && @last_name.chars.first =~ /[A-Z]/ && @first_name.length > 2
   end
 
   def valid_pesel?

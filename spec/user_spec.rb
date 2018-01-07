@@ -4,8 +4,8 @@ RSpec.describe User do
   describe '.new' do
     subject(:valid_user) { User.new 1, 'John', 'Doe', '90010198765' }
     subject(:user_with_wrong_id) { User.new 'A', 'John', 'Doe', '90010198765' }
-    subject(:user_with_wrong_first_name) { User.new 1, 'johannantadeusz', 'Doe', '90010198765' }
-    subject(:user_with_wrong_last_name) { User.new 1, 'Joe', 'dontremuslikamteruskiwon' }
+    subject(:user_with_wrong_first_name) { User.new 1, 'johan', 'Doe', '90010198765' }
+    subject(:user_with_wrong_last_name) { User.new 1, 'Joe', 'dont', '90010198765' }
     subject(:user_with_wrong_pesel) { User.new 1, 'John', 'Doe', '90010198a65' }
 
     it 'initializes a new valid user' do

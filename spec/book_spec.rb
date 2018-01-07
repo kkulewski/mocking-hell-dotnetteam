@@ -2,11 +2,11 @@ require 'spec_helper'
 
 RSpec.describe Book do
   describe '.new' do
-    subject(:valid_book) { Book.new 1, 'Donald Knuth', 'The Art of Computer Programming', '1968' }
-    subject(:book_with_wrong_id) { Book.new 'A', 'Donald Knuth', 'The Art of Computer Programming', '1968' }
-    subject(:book_with_wrong_author) { Book.new 1, '', 'The Art of Computer Programming', '1968' }
-    subject(:book_with_wrong_title) { Book.new 1, 'Donald Knuth', '', '1968' }
-    subject(:book_with_wrong_year) { Book.new 1, 'Donald Knuth', 'The Art of Computer Programming', '2019' }
+    subject(:valid_book) { Book.new 1, 'Donald Knuth', 'The Art of Computer Programming', 1968 }
+    subject(:book_with_wrong_id) { Book.new 'A', 'Donald Knuth', 'The Art of Computer Programming', 1968 }
+    subject(:book_with_wrong_author) { Book.new 1, '', 'The Art of Computer Programming', 1968 }
+    subject(:book_with_wrong_title) { Book.new 1, 'Donald Knuth', '', 1968 }
+    subject(:book_with_wrong_year) { Book.new 1, 'Donald Knuth', 'The Art of Computer Programming', 2019 }
 
     it 'initializes a new book' do
       expect { valid_book }.not_to raise_error
