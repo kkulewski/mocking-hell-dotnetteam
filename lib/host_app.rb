@@ -22,17 +22,9 @@ class HostApp
   def run
     loop do
       print_gap
-      print_menu
-      choose_option
+      print_main_menu
+      choose_main_option
     end
-  end
-
-  def print_menu
-    write '-- MENU --'
-    write '[1] LIST USERS'
-    write '[2] ADD USER'
-    write '[3] REMOVE USER'
-    write '[4] UPDATE USER'
   end
 
   def print_gap
@@ -44,7 +36,40 @@ class HostApp
     result.nil? ? 'ERROR' : 'OK'
   end
 
-  def choose_option
+  ### MAIN
+
+  def print_main_menu
+    write '-- MAIN MENU --'
+    write '[1] USER MANAGEMENT'
+    write '[2] BOOK MANAGEMENT'
+  end
+
+  def choose_main_option
+    option = read
+    print_gap
+    case option
+    when '1'
+      print_user_menu
+      choose_user_option
+    when '2'
+      print_book_menu
+      choose_book_option
+    else
+      write 'Wrong option!'
+    end
+  end
+
+  ### USER MANAGEMENT
+
+  def print_user_menu
+    write '-- USER MENU --'
+    write '[1] LIST USERS'
+    write '[2] ADD USER'
+    write '[3] REMOVE USER'
+    write '[4] UPDATE USER'
+  end
+
+  def choose_user_option
     option = read
     print_gap
     case option
@@ -102,6 +127,33 @@ class HostApp
     write status(result)
   end
 
+  ### BOOK MANAGEMENT
+
+  def print_book_menu
+    write '-- BOOK MENU --'
+    write '[1] LIST BOOKS'
+    write '[2] ADD BOOK'
+    write '[3] REMOVE BOOK'
+    write '[4] UPDATE BOOK'
+  end
+
+  def choose_book_option
+    option = read
+    print_gap
+    case option
+    when '1'
+      print_books
+    when '2'
+      add_book
+    when '3'
+      remove_book
+    when '4'
+      update_book
+    else
+      write 'Wrong option!'
+    end
+  end
+
   def print_books
     write '-- BOOKS --'
     @book_manager.books.each { |x| write x.to_s }
@@ -142,6 +194,8 @@ class HostApp
     result = @book_manager.update_book(book_id, updated_book)
     write status(result)
   end
+
+  ### HELPERS
 
   def populate
     @user_manager.add_user(User.new(1, 'John', 'Doe', '91010155666'))
