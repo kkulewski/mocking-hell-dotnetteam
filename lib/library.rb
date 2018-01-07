@@ -29,6 +29,6 @@ class Library
   end
 
   def average_books_rented
-    total_books_rented / @user_manager.users.count
+    total_books_rented.to_f / @user_manager.users.count
   end
 end

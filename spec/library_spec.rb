@@ -76,7 +76,7 @@ RSpec.describe Library do
     describe '.average_books_rented' do
       it 'returns correct average' do
         allow(user_manager).to receive(:users).and_return(unsorted_users)
-        average = unsorted_users.sum(&:overall_rented_books) / unsorted_users.count
+        average = unsorted_users.sum(&:overall_rented_books).to_f / unsorted_users.count
         expect(library.average_books_rented).to eq(average)
       end
     end
