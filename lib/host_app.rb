@@ -176,7 +176,7 @@ class HostApp
     title = read
     write 'Year?'
     year = Integer(read)
-    User.new id, author, title, year
+    Book.new id, author, title, year
   end
 
   def remove_book
