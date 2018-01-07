@@ -2,10 +2,16 @@ require 'spec_helper'
 
 RSpec.describe User do
   describe '.new' do
-    subject(:user) { User.new 1, 'John', 'Doe', '90010198765' }
+    subject(:valid_user) { User.new 1, 'John', 'Doe', '90010198765' }
 
-    it 'initializes a new user' do
-      expect { user }.not_to raise_error
+    subject(:user_with_wrong_pesel) { User.new 1, 'John', 'Doe', '90010198a65' }
+
+    it 'initializes a new valid user' do
+      expect { valid_user }.not_to raise_error
+    end
+
+    it 'raises error on user with wrong pesel' do
+      expect { user_with_wrong_pesel }.to raise_error(ArgumentError)
     end
   end
 
