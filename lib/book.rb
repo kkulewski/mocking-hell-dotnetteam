@@ -11,7 +11,7 @@ class Book
   end
 
   def to_s
-    "[#{id}]: #{author} - #{title} - #{year}"
+    "[#{id}]: #{author} - #{title} (#{year})"
   end
 
   def validate

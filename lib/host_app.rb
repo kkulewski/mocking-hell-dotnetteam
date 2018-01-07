@@ -253,6 +253,43 @@ class HostApp
     choose_library_option
   end
 
+  def print_rentals
+    write '-- RENTALS --'
+    @book_manager.books.each do |book|
+      user = @user_manager.get_user(book.rented_by)
+      rented_by = "|by: [#{user.id}] #{user.first_name} #{user.last_name}|" unless user.nil?
+      write("#{book} #{rented_by}")
+    end
+    write "- total: #{@library.total_books_rented} (avg. #{@library.average_books_rented})"
+  end
+
+  def rent_book
+    write '-- RENT BOOK --'
+    write 'USER ID?'
+    user_id = Integer(read)
+    write 'BOOK ID?'
+    book_id = Integer(read)
+    result = @library.rent_book(user_id, book_id)
+    write status(result)
+  end
+
+  def return_book
+    write '-- RETURN BOOK --'
+    write 'USER ID?'
+    user_id = Integer(read)
+    write 'BOOK ID?'
+    book_id = Integer(read)
+    result = @library.return_book(user_id, book_id)
+    write status(result)
+  end
+
+  def print_best_readers
+    write '-- BEST READERS --'
+    @library.best_readers.each do |user|
+      write "[#{user.id}] #{user.first_name} #{user.last_name} - #{user.overall_rented_books}"
+    end
+  end
+
   ### HELPERS
 
   def populate_users
