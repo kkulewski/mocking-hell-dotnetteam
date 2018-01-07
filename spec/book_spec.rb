@@ -2,10 +2,15 @@ require 'spec_helper'
 
 RSpec.describe Book do
   describe '.new' do
-    subject(:book) { Book.new 1, 'Donald Knuth', 'The Art of Computer Programming', '1968' }
+    subject(:valid_book) { Book.new 1, 'Donald Knuth', 'The Art of Computer Programming', '1968' }
+    subject(:book_with_wrong_year) { Book.new 1, 'Donald Knuth', 'The Art of Computer Programming', '2019' }
 
     it 'initializes a new book' do
-      expect { book }.not_to raise_error
+      expect { valid_book }.not_to raise_error
+    end
+
+    it 'raises error on book with worng year' do
+      expect { book_with_wrong_year }.to raise_error(ArgumentError)
     end
   end
 end
