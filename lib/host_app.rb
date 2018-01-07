@@ -3,6 +3,7 @@ require_relative 'user'
 require_relative 'user_manager'
 require_relative 'book'
 require_relative 'book_manager'
+require_relative 'library'
 require 'date'
 
 class HostApp
@@ -10,6 +11,7 @@ class HostApp
     @io = io
     @user_manager = UserManager.new
     @book_manager = BookManager.new
+    @library = Library.new(@user_manager, @book_manager)
   end
 
   def write(message)
@@ -43,6 +45,8 @@ class HostApp
     write '-- MAIN MENU --'
     write '[1] USER MANAGEMENT'
     write '[2] BOOK MANAGEMENT'
+    write '[3] LIBRARY'
+    write '[5] EXIT'
   end
 
   def choose_main_option
@@ -55,6 +59,11 @@ class HostApp
     when '2'
       print_book_menu
       choose_book_option
+    when '3'
+      print_library_menu
+      choose_library_option
+    when '5'
+      exit
     else
       write 'Wrong option!'
     end
@@ -64,10 +73,10 @@ class HostApp
 
   def print_user_menu
     write '-- USER MENU --'
-    write '[1] LIST USERS'
-    write '[2] ADD USER'
-    write '[3] REMOVE USER'
-    write '[4] UPDATE USER'
+    write '[1] LIST'
+    write '[2] ADD'
+    write '[3] REMOVE'
+    write '[4] UPDATE'
     write '[5] GO BACK'
   end
 
@@ -139,10 +148,10 @@ class HostApp
 
   def print_book_menu
     write '-- BOOK MENU --'
-    write '[1] LIST BOOKS'
-    write '[2] ADD BOOK'
-    write '[3] REMOVE BOOK'
-    write '[4] UPDATE BOOK'
+    write '[1] LIST'
+    write '[2] ADD'
+    write '[3] REMOVE'
+    write '[4] UPDATE'
     write '[5] GO BACK'
   end
 
@@ -210,6 +219,40 @@ class HostApp
     write status(result)
   end
 
+  ### LIBRARY MANAGEMENT
+
+  def print_library_menu
+    write '-- LIBRARY MENU --'
+    write '[1] LIST'
+    write '[2] RENT BOOK'
+    write '[3] RETURN BOOK'
+    write '[4] BEST READERS'
+    write '[5] GO BACK'
+  end
+
+  def choose_library_option
+    option = read
+    print_gap
+    case option
+    when '1'
+      print_rentals
+    when '2'
+      rent_book
+    when '3'
+      return_book
+    when '4'
+      print_best_readers
+    when '5'
+      return
+    else
+      write 'Wrong option!'
+    end
+
+    print_gap
+    print_library_menu
+    choose_library_option
+  end
+
   ### HELPERS
 
   def populate_users
@@ -221,9 +264,9 @@ class HostApp
   end
 
   def populate_books
-    @book_manager.add_book(Book.new(1, 'Fyodor Dostoyevsky', 'The Brothers Karamazov', 1880))
+    @book_manager.add_book(Book.new(1, 'Franz Kafka', 'The Trial', 1925))
     @book_manager.add_book(Book.new(2, 'Franz Kafka', 'The Castle', 1926))
-    @book_manager.add_book(Book.new(3, 'Dante Alighieri', 'The Divine Comedy', 1320))
+    @book_manager.add_book(Book.new(3, 'Dante Alighieri', 'Divine Comedy', 1320))
     @book_manager.add_book(Book.new(4, 'Johann Wolfgang', 'Faust', 1833))
     @book_manager.add_book(Book.new(5, 'William Shakespeare', 'Hamlet', 1609))
   end
