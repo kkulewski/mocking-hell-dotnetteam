@@ -10,6 +10,10 @@ class Book
     validate
   end
 
+  def to_s
+    "[#{id}]: #{author} - #{title} (#{year})"
+  end
+
   def validate
     raise ArgumentError, 'Invalid ID' unless valid_id?
     raise ArgumentError, 'Invalid author' unless valid_author?
