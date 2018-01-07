@@ -102,6 +102,47 @@ class HostApp
     write status(result)
   end
 
+  def print_books
+    write '-- BOOKS --'
+    @book_manager.books.each { |x| write x.to_s }
+  end
+
+  def add_book
+    write '-- ADD NEW BOOK --'
+    book = create_book
+    result = @book_manager.add_book book
+    write status(result)
+  end
+
+  def create_book
+    write 'ID?'
+    id = Integer(read)
+    write 'Author?'
+    author = read
+    write 'Title?'
+    title = read
+    write 'Year?'
+    year = Integer(read)
+    User.new id, author, title, year
+  end
+
+  def remove_book
+    write '-- REMOVE BOOK --'
+    write 'ID?'
+    book_id = Integer(read)
+    result = @book_manager.remove_book book_id
+    write status(result)
+  end
+
+  def update_book
+    write '-- UPDATE BOOK --'
+    write 'ID?'
+    book_id = Integer(read)
+    updated_book = create_book
+    result = @book_manager.update_book(book_id, updated_book)
+    write status(result)
+  end
+
   def populate
     @user_manager.add_user(User.new(1, 'John', 'Doe', '91010155666'))
     @user_manager.add_user(User.new(2, 'Kate', 'Smith', '75101198765'))
