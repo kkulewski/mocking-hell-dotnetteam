@@ -3,6 +3,7 @@ require_relative 'user'
 require_relative 'user_manager'
 require_relative 'book'
 require_relative 'book_manager'
+require 'date'
 
 class HostApp
   def initialize(io)
