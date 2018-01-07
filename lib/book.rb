@@ -8,4 +8,12 @@ class Book
     @year = year
     @rented_by = nil # user_id
   end
+
+  def validate
+    raise ArgumentError, 'Invalid year' unless valid_year?
+  end
+
+  def valid_year?
+    @year <= Data.today.year
+  end
 end
