@@ -16,7 +16,12 @@ class User
   end
 
   def validate
+    raise ArgumentError, 'Invalid ID' unless valid_id?
     raise ArgumentError, 'Invalid PESEL' unless valid_pesel?
+  end
+
+  def valid_id?
+    @id.is_a?(Numeric)
   end
 
   def valid_pesel?
