@@ -8,9 +8,18 @@ class User
     @pesel = pesel
     @overall_rented_books = 0
     @currently_rented_books = currently_rented_books
+    validate
   end
 
   def to_s
     "[#{id}]: #{first_name} #{last_name} - #{pesel}"
+  end
+
+  def validate
+    raise ArgumentError, 'Invalid PESEL' unless valid_pesel?
+  end
+
+  def valid_pesel?
+    @pesel =~ /^[0-9]{11}$/
   end
 end
