@@ -6,7 +6,7 @@ require_relative 'book_manager'
 require_relative 'library'
 require 'date'
 
-class HostApp
+class AppDemo
   def initialize(io)
     @io = io
     @user_manager = UserManager.new
