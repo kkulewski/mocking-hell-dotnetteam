@@ -1,6 +1,6 @@
-require_relative '../lib/host_app'
+require_relative '../lib/app_demo'
 
-app = HostApp.new(ConsoleIo.new)
+app = AppDemo.new(ConsoleIo.new)
 app.populate_users
 app.populate_books
 app.run
