@@ -1,4 +1,9 @@
-# Mocking Hell 2017/2018
+# Library - Mocking Hell 2017/2018
+Tematem projektu jest **system do zarządzania biblioteką**, który pozwala:
+- wyświetlać, dodawać, usuwać oraz aktualizować użytkowników,
+- wyświetlać, dodawać, usuwać oraz aktualizować książki,
+- wypożyczać ksiązki użytkownikom,
+- tworzyć zestawienia
 
 ## Autorzy
 - [Krzysztof Józefczyk](https://github.com/krzysiekjozefczyk)
